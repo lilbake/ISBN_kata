@@ -1,9 +1,5 @@
 def length_of_isbn(isbn_number)
-	if isbn_number.length == 10
-		true
-	elsif isbn_number.length == 13
-		true
-	else
+	if isbn_number.length != 10 || 13
 		false
 	end
 end
