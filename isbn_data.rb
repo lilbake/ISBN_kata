@@ -1,7 +1,6 @@
 require_relative "class_isbn_kata_test.rb"
 require "csv"
 
-
 file = File.open("duplicate_isbn_examples.csv", "w")
 
 CSV.foreach('input_isbn_file.csv') do |row|
