@@ -101,6 +101,7 @@ class TestIsbnChecker < Minitest::Test
         assert_equal(false, valid_isbn?("4780470059029"))
         assert_equal(false, valid_isbn?("0-321@14653-0"))
         assert_equal(false, valid_isbn?("877195x869"))
+        assert_equal(false, valid_isbn?("978-O-13-149505-0"))
         assert_equal(true, valid_isbn?("0471958697"))
         assert_equal(true, valid_isbn?("-321-14653-0"))
         assert_equal(true, valid_isbn?("877195869x"))

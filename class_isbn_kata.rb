@@ -1,12 +1,14 @@
 def valid_isbn?(input_string)
-    remove_invalid_characters(input_string)
-    correct_length?(input_string)
+    string_with_no_spaces_and_hyphens = remove_invalid_characters(input_string)
+    valid_length = correct_length?(string_with_no_spaces_and_hyphens)
+    non_numerical = contains_non_numerical_characters?(string_with_no_spaces_and_hyphens)
+    non_numerical == true && valid_length == true
 end
 
 
 def remove_invalid_characters(input_string)
-    input_string.delete!(" ")
-    input_string.delete!("-")
+    no_spaces = input_string.delete(" ")
+    no_hyphens = no_spaces.delete("-")
 end
 
 
@@ -56,8 +58,6 @@ def isbn13_math?(string)
     multiply = multiply_array(isbn_13_array)
     summed = sum_of_items(multiply)
        sub = subtraction(summed)
-
-
     if sub == string[-1].to_i
         true
     else
@@ -65,34 +65,22 @@ def isbn13_math?(string)
     end    
 end
 
-
-
-
-
 def convert_string_to_array(string)
     string.split("") 
-
-
 end    
-
 
 def multiply_array(input_array)
     array = []
     input_array.each_with_index do |value, index|
         value = value.to_i
-
-
         if index % 2 == 0 
          array << value * 1
-
-
         else
          array << value * 3
         end    
     end    
     array    
 end    
-
 
 def sum_of_items(array_of_numbers)
     sum = 0
@@ -104,19 +92,16 @@ def sum_of_items(array_of_numbers)
     sum 
 end
 
-
 def subtraction(number)
     sum = number%10
     mod_result = 10 - sum
     final_result = mod_result%10
 end
 
-
-def contains_non_numerical_characters(input_string)
+def contains_non_numerical_characters?(input_string)
     if input_string =~/\D/
         true
     else 
         false
     end
-
 end
