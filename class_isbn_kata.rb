@@ -1,27 +1,23 @@
 def valid_isbn?(input_string)
     string_with_no_spaces_and_hyphens = remove_invalid_characters(input_string)
-    valid_length = correct_length?(string_with_no_spaces_and_hyphens)
-    non_numerical = contains_non_numerical_characters?(string_with_no_spaces_and_hyphens)
-    non_numerical == true && valid_length == true
+    correct_length?(string_with_no_spaces_and_hyphens)
 end
-
 
 def remove_invalid_characters(input_string)
     no_spaces = input_string.delete(" ")
     no_hyphens = no_spaces.delete("-")
 end
 
-
 def correct_length?(input_string)
-    if input_string.length == 10     
-        true
-    elsif input_string.length == 13 && isbn13_math?(input_string)
-        true
+    if input_string.length == 10 && contains_non_numerical_characters?(input_string[0...8]) == false
+        isbn_10_math?(input_string)
+    elsif input_string.length == 13 && contains_non_numerical_characters?(input_string) == false
+        isbn13_math?(input_string)
+
     else    
         false
     end
 end    
-
 
 def isbn_10(string)
     sum = 0
@@ -34,13 +30,11 @@ def isbn_10(string)
     sum
 end
 
-
 def isbn_10_mod_11(number)
     checksum = number%11
 end
 
-
-def isbn_10_containing_x?(number)
+def isbn_10_math?(number)
     sum = isbn_10(number)
     checksum = isbn_10_mod_11(sum)
     
@@ -98,8 +92,8 @@ def subtraction(number)
     final_result = mod_result%10
 end
 
-def contains_non_numerical_characters?(input_string)
-    if input_string =~/\D/
+def contains_non_numerical_characters?(string)
+    if string =~/\D/
         true
     else 
         false
