@@ -95,4 +95,16 @@ class TestIsbnChecker < Minitest::Test
         assert_equal(true, valid_isbn?("978-0-13-149505-0"))
         assert_equal(true, valid_isbn?("978 0 471 48648 0"))
     end
+
+    def test_csv_exist
+        File.exist?('input_isbn_file.csv')
+    end
+
+    def test_new_csv_file_exists
+        File.exist?("duplicate_isbn_examples1.csv")
+    end
+
+    def test_if_data_has_been_changed
+        assert_equal(false, FileUtils.compare_file("input_isbn_file.csv", "duplicate_isbn_examples1.csv"))
+    end
 end

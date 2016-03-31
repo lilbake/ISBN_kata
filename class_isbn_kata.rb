@@ -99,3 +99,4 @@ def contains_non_numerical_characters?(string)
         false
     end
 end
+
