@@ -7,9 +7,24 @@ end
 def board_update(board, position, marker)
 	board[position] = marker
 	board
-
 end
 
+# test for validity of the space 
+def validity_position?(board, position, marker)
+	if board[position] == position + 1
+		true
+	else
+		false
+	end
+end
+
+
+#check that you win lose or tie the game
+def marker_one_win(board, position, marker)
+	if board[2]  && board[5] && board[8] == "X"
+		true
+	end
+end
 
 
 
