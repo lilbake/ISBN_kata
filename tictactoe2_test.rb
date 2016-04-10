@@ -17,8 +17,16 @@ class TicTacToe < Minitest::Test
 		assert_equal(true, validity_position?(["X", 2, 3, 4, 5, 6, 7, 8, 9], 4, "O"))
 	end
 
-	def test_that_its_a_win_or_tie
-		assert_equal(true, win_lose_tie([1, 2, "X", 4, 5, "X", 7, 8, "X"], [2, 5, 8], "X"))
+	def test_that_combo_wins
+		assert_equal(true, winning_combos([1, 2, "X", 4, 5, "X", 7, 8, "X"], "X"))
+		assert_equal(true, winning_combos([1, 2, "O", 4, 5, "O", 7, 8, "O"], "O"))
 	end
 
+# 	def test_if_game_is_a_tie
+# 		assert_equal(true, tie_combos?(["X", "X", "O", "O", "X", "X", "X", "O", "O"], "O"))
+# 	end
+
+	def test_that_the_game_is_finished
+		assert_equal(true, game_over?([1, 2, "O", 4, 5, "O", 7, 8, "O"], "O"))
+	end
 end

@@ -19,14 +19,29 @@ def validity_position?(board, position, marker)
 end
 
 
-#check that you win lose or tie the game
-def marker_one_win(board, position, marker)
-	if board[2]  && board[5] && board[8] == "X"
+#check that the x marker is a winner
+def winning_combos(board, marker)
+	if  board[1] == marker  && board[4] == marker && board[7] == marker ||
+		board[2] == marker  && board[5] == marker && board[8] == marker ||
+		board[0] == marker  && board[1] == marker && board[2] == marker ||
+		board[3] == marker  && board[4] == marker && board[5] == marker ||
+		board[6] == marker  && board[7] == marker && board[8] == marker ||
+		board[0] == marker  && board[4] == marker && board[8] == marker ||
+		board[2] == marker  && board[4] == marker && board[6] == marker ||
+		board[0] == marker  && board[3] == marker && board[6] == marker 
 		true
 	end
 end
 
-
-
+# def tie_combos?(board, marker)
+# 	if
+		
+# 	end
+# end
 	
+def game_over?(board, marker)
+	if board == winning_combos
+		true
+	end
+end
 	
